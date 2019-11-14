@@ -714,7 +714,7 @@ inline Value* TCGLLVMContextPrivate::generateCpuStatePtr(TCGArg registerOffset, 
                    ret = m_builder.CreateGEP(m_cpuState, ArrayRef<Value*>(gepElements.begin(), gepElements.end()));
                    m_registers[registerOffset] = ret;
 
-                   if (m_eip_last_gep_index == 0 && registerOffset == m_tcgContext->env_offset_eip) {
+                   if (m_eip_last_gep_index == 0 && registerOffset == m_tcgContext->env_offset_pc) {
                        m_eip_last_gep_index = (unsigned)dyn_cast<ConstantInt>(gepElements.back())->getZExtValue();
                    }
                 } else {
